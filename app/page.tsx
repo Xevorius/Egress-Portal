@@ -1,4 +1,5 @@
 import Dashboard from "@/components/Dashboard";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function Home() {
   return (
@@ -7,3 +8,5 @@ export default function Home() {
     </main>
   );
 }
+
+
