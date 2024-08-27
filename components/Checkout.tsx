@@ -1,6 +1,7 @@
 "use client"
 
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import { inDevEnvironment } from "@/lib/DevEnv";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import React, { useEffect, useState } from "react";
 
@@ -40,12 +41,17 @@ const Checkout = ({amount}: {amount: number}) => {
             setLoading(false);
             return;
         }
+        
+        var return_url = 'https://www.egress-portal.com/payment-success?amount='+amount;
+        if(process.env.NODE_ENV == "development"){
+            return_url = 'http://www.localhost:3000/payment-success?amount='+amount
+        }
 
         const {error} = await stripe.confirmPayment({
             elements,
             clientSecret,
             confirmParams: {
-                return_url: 'http://www.localhost:3000/payment-success?amount=${amount}',
+                return_url: return_url,
             },
         });
 
