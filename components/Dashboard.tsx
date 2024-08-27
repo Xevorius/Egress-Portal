@@ -2,6 +2,7 @@
 
 import { signIn, signOut, useSession } from "next-auth/react"
 import React from "react"
+import Image from 'next/image'
 
 const Dashboard = () => {
     const { data: session } = useSession();
@@ -10,7 +11,7 @@ const Dashboard = () => {
         <>
             {session ? (
                 <>
-                    <img src={ session.user?.image as string } className="rounded-full h-20"></img>
+                    <Image src={session.user?.image as string} width={500} height={500} className="rounded-full h-20 w-20" alt={ session.user?.name as string }/>
                     <h1>Welcome Back, { session.user?.name }</h1>
                     <button onClick={() => signOut()} className="border border-black rounded-lg bg-red-500 px-5 py-1">Sign out</button>
                 </>
