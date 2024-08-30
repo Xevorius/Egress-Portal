@@ -1,17 +1,29 @@
+'use client'; // Add this to mark the file as a client component
+
+import { useRouter } from 'next/navigation';
 import { User, MoveRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import { loadStripe } from "@stripe/stripe-js";
 
+
+
 export default function Home() {
+  const router = useRouter();
+
+  const handleNavigateToDashboard = () => {
+    router.push('/dashboard');
+  };
+
+
   return (
-  <main className="relative inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(100%_100%_at_50%_10%,#000_30%,#63e_100%)]">
+  <main className="">
 
     <div className="container mx-auto">
       <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
         <div>
-          <Badge variant="outline">Egress is live!</Badge>
+          <Badge variant="outline">🔰Egress is live!</Badge>
         </div>
         <div className="flex gap-4 flex-col">
           <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
@@ -20,14 +32,14 @@ export default function Home() {
           <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
           Every operating system on Every platform, Everywhere. 
           Run any OS based on your needs, on any device. 
-          Transform your experience and gain flexibility like never before — it's all in your hands.
+          Transform your experience and gain flexibility like never before — it&apos;s all in your hands.
           </p>
         </div>
         <div className="flex flex-row gap-3">
-          <Button size="lg" className="gap-4" variant="outline">
+          <Button size="lg" className="gap-4" variant="outline" onClick={handleNavigateToDashboard}>
             Jump on a waitlist <Clock className="w-4 h-4" />
           </Button>
-          <Button size="lg" className="gap-4">
+          <Button size="lg" className="gap-4" onClick={handleNavigateToDashboard}>
             Sign up here <MoveRight className="w-4 h-4" />
           </Button>
         </div>
