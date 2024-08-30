@@ -4,9 +4,10 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import React from "react"
 import Image from 'next/image'
 import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
-const Dashboard = () => {
-    const { data: session } = useSession();
+const Dashboard = async () => {
+    const session = await auth()
 
     return (
         <>
