@@ -1,7 +1,7 @@
 "use client"
 
-import convertToSubcurrency from "@/src/lib/convertToSubcurrency";
-import { inDevEnvironment } from "@/src/lib/DevEnv";
+import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import { inDevEnvironment } from "@/lib/DevEnv";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import React, { useEffect, useState } from "react";
 

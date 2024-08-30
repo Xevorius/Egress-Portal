@@ -1,6 +1,6 @@
 "use client"
 
-import convertToSubcurrency from "@/src/lib/convertToSubcurrency";
+import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
