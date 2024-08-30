@@ -5,7 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import Checkout from "./Checkout";
+import Checkout from "./checkout";
 
 const Payment = () => {
     const { data: session } = useSession();
