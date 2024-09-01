@@ -6,7 +6,7 @@
  * See README.md for usage and integration instructions.
  */
 
-import * as Log from 'portal/core/util/logging.ts';
+import * as Log from './core/util/logging.js';
 
 // init log level reading the logging HTTP param
 export function initLogging(level) {

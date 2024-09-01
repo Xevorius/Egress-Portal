@@ -1,3 +1,5 @@
+'use client'
+
 /*
  * noVNC: HTML5 VNC client
  * Copyright (C) 2018 The noVNC Authors

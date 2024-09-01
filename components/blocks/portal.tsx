@@ -1,10 +1,11 @@
-"use client"
+'use client'
 
 import { auth } from "@/auth";
+import UI from '@/lib/ui'
 
-const Portal = async () => {
-    const session = await auth()
 
+const Portal = () => {
+    UI;
     return (
 <>
             {/*
@@ -101,8 +102,8 @@ const Portal = async () => {
             <link rel="preload" as="image" href="portal/images/error.svg" />
             <link rel="preload" as="image" href="portal/images/warning.svg" />
 
-            <script src="portal/error-handler.js" defer></script>
-            <script src="portal/ui.js" defer></script>
+            {/* <script src="portal/error-handler.js" defer></script>
+            <script src="portal/ui.js" defer></script> */}
 
             <div id="noVNC_fallback_error" className="noVNC_center">
                 <div>

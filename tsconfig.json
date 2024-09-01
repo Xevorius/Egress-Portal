@@ -21,6 +21,6 @@
       "@/*": ["./*","./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public/portal/webutil.js", "public/portal/ui.js", "public/portal/core/util/logging.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/webutil.js", "lib/ui.js", "lib/core/util/logging.js"],
   "exclude": ["node_modules"]
 }
