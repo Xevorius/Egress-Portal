@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/Egress-logo-s.ico" /> 
+        <link rel="icon" href="/Favicon.ico" /> 
       </head>
       <body className={inter.className}>
        <SessionWrapper>
