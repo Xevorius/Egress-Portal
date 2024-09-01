@@ -1,8 +1,6 @@
-'use client'
+"use client"
 
-import { auth } from "@/auth";
 import UI from '@/lib/ui'
-
 
 const Portal = () => {
     UI;
