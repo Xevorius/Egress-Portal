@@ -1,18 +1,24 @@
-"use client"
+'use client'
+
 import { useEffect, useState } from 'react';
 
 export default function PaymentSuccess({
-    searchParamsPromise,
+    searchParams,
 }: {
-    searchParamsPromise: Promise<{ amount: string }>;
+    searchParams: { amount: string };
 }) {
     const [amount, setAmount] = useState<string | null>(null);
 
     useEffect(() => {
+        // Simulate a promise for demonstration purposes
+        const searchParamsPromise = new Promise<{ amount: string }>((resolve) => {
+            resolve(searchParams);
+        });
+
         searchParamsPromise.then(({ amount }) => {
             setAmount(amount);
         });
-    }, [searchParamsPromise]);
+    }, [searchParams]);
 
     if (amount === null) {
         return <div>Loading...</div>;
