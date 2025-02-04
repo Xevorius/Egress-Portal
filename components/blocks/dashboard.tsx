@@ -6,9 +6,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
-const Dashboard = async () => {
-  const session = await auth();
-
+const Dashboard = ({ session }: { session: any }) => {
   return (
     <>
       {session ? (
