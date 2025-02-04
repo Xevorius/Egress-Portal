@@ -75,7 +75,7 @@ function MobileNavigation(
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <PopoverBackdrop className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+          <PopoverBackdrop className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-xs dark:bg-black/80" />
         </TransitionChild>
         <TransitionChild
           as={Fragment}
@@ -136,7 +136,7 @@ function NavItem({
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-700 to-transparent dark:from-zinc-400/0 dark:via-blue-400/40 dark:to-transparent" />
+          <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-transparent via-blue-700 to-transparent dark:from-zinc-400/0 dark:via-blue-400/40 dark:to-transparent" />
         )}
       </Link>
     </li>
@@ -146,7 +146,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-zinc-0 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/30 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="flex rounded-full bg-zinc-0 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/30 dark:text-zinc-200 dark:ring-white/10">
         {navItems.map((item) => (
           <NavItem key={item.href} href={item.href}>
             {item.label}
@@ -258,7 +258,7 @@ export function Header() {
           }}
         >
           <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
+            className="top-(--header-top,--spacing(6)) w-full"
             style={{
               position:
                 "var(--header-inner-position)" as React.CSSProperties["position"],
