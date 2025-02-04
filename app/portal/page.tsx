@@ -1,8 +1,4 @@
-import Portal from "@/components/blocks/portal"
-
 export default function PortalPage() {
-    return (
-        < Portal />
-    )
+    return (<div>Hi2</div>)
 }
 
