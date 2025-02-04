@@ -12,7 +12,7 @@ const Payment = () => {
     const amount = 29.99;
 
     if ( session === null) {
-        redirect(`/login`)
+        redirect(`/dashboard`)
     } 
 
     if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
