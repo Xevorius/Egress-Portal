@@ -1,8 +1,22 @@
+import { useEffect, useState } from 'react';
+
 export default function PaymentSuccess({
-    searchParams: { amount },
+    searchParamsPromise,
 }: {
-    searchParams: { amount: string };
+    searchParamsPromise: Promise<{ amount: string }>;
 }) {
+    const [amount, setAmount] = useState<string | null>(null);
+
+    useEffect(() => {
+        searchParamsPromise.then(({ amount }) => {
+            setAmount(amount);
+        });
+    }, [searchParamsPromise]);
+
+    if (amount === null) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-blue-500">
             <div className="md-10">
@@ -13,5 +27,5 @@ export default function PaymentSuccess({
                 </div>
             </div>
         </main>
-    )
+    );
 }
