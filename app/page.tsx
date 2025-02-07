@@ -1,19 +1,19 @@
-"use client"; // Add this to mark the file as a client component
+"use server"; // Add this to mark the file as a client component
 
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { User, MoveRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { GitHubLogin } from "@/lib/actions/auth";
+import { SignInButton } from "@/components/blocks/signInButton";
+import { auth } from "@/auth";
 
-import { loadStripe } from "@stripe/stripe-js";
 
-export default function Home() {
-  const router = useRouter();
-
-  const handleNavigateToDashboard = () => {
-    router.push("/dashboard");
-  };
-
+export default async function Home() {
+  const session = await auth();
+  if (session?.user){
+    redirect('/dashboard')
+  }
   return (
     <main className="">
       <div className="container mx-auto">
@@ -36,17 +36,10 @@ export default function Home() {
               size="lg"
               className="gap-4"
               variant="outline"
-              onClick={handleNavigateToDashboard}
             >
               Jump on a waitlist <Clock className="w-4 h-4" />
             </Button>
-            <Button
-              size="lg"
-              className="gap-4"
-              onClick={handleNavigateToDashboard}
-            >
-              Sign up here <MoveRight className="w-4 h-4" />
-            </Button>
+            <SignInButton/>
           </div>
         </div>
       </div>
