@@ -1,10 +1,9 @@
 "use server"; // Add this to mark the file as a client component
 
 import { redirect } from "next/navigation";
-import { User, MoveRight, Clock } from "lucide-react";
+import { User, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { GitHubLogin } from "@/lib/actions/auth";
 import { SignInButton } from "@/components/blocks/signInButton";
 import { auth } from "@/auth";
 
