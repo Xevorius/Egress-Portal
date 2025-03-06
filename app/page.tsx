@@ -70,9 +70,9 @@ export default async function Home() {
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-black dark:text-white">
-              Unleash the power of <br />
+              Break the limits of<br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
+                Any Device
               </span>
             </h1>
           </>
@@ -88,7 +88,7 @@ export default async function Home() {
         />
       </ContainerScroll>
     </div>
-    <div className=" pb-[300px]">
+    <div className="">
       <FeatureSteps 
         features={features}
         title="Your Journey Starts Here"
