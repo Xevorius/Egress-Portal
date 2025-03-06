@@ -5,8 +5,6 @@ import SessionWrapper from "@/components/blocks/SessionWrapper";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
-import { Header } from "../components/blocks/header";
-import { Footer } from "../components/blocks/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +27,7 @@ export default function RootLayout({
         <SessionWrapper>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             storageKey="egress.theme"
             disableTransitionOnChange
@@ -39,15 +37,13 @@ export default function RootLayout({
               skipDelayDuration={10}
               disableHoverableContent
             >
-              <div className="flex w-full h-full min-h-full">
+              {/* <div className="flex w-full h-full min-h-full">
                 <div className="relative flex w-full h-full flex-col">
-                  <div className="relative flex w-full flex-col">
-                    <Header />
+                  <div className="relative flex w-full flex-col"> */}
                     <main className="flex-auto ">{children}</main>
-                    <Footer />
-                  </div>
+                  {/* </div>
                 </div>
-              </div>
+              </div> */}
             </TooltipProvider>
           </ThemeProvider>
         </SessionWrapper>
@@ -55,6 +51,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-//<div class="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
-

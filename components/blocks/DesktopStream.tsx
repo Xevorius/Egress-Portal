@@ -14,7 +14,7 @@ const DesktopStream = ({ userId }: { userId: string }) => {
     console.log("DesktopStream component rendered, userId:", userId); // ADD THIS LINE
 
     // Establish WebSocket connection with Janus server
-    wsRef.current = new WebSocket(SIGNALING_SERVER_URL);
+    wsRef.current = new WebSocket(SIGNALING_SERVER_URL, 'janus-protocol');
 
     wsRef.current.onopen = () => {
       console.log("WebSocket onopen"); // ADD THIS LINE
@@ -44,9 +44,13 @@ const DesktopStream = ({ userId }: { userId: string }) => {
       console.log("Received from Janus:", data);
 
       if (data.janus === "success") {
+        if (data.janus === "success" && data.data?.handle_id) {
+            const handleId = data.data.handle_id;
+            console.log("Received handle_id:", handleId);
+          }
         if (data.plugindata?.plugin === "janus.plugin.streaming") {
           // Step 2: Attach to streaming plugin (for desktop stream)
-          const streamId = "your-stream-id"; // Specify the stream you want to access
+          const streamId = ""; // Specify the stream you want to access
           wsRef.current?.send(
             JSON.stringify({
               janus: "attach",
@@ -66,6 +70,7 @@ const DesktopStream = ({ userId }: { userId: string }) => {
 
         peerRef.current.onicecandidate = (event) => {
           if (event.candidate) {
+            console.log("ICE Candidate:", event.candidate);
             wsRef.current?.send(
               JSON.stringify({
                 janus: "message",
@@ -85,18 +90,21 @@ const DesktopStream = ({ userId }: { userId: string }) => {
         };
 
         // Step 3: Create the WebRTC offer
-        const offer = await peerRef.current.createOffer();
-        await peerRef.current.setLocalDescription(offer);
-
-        wsRef.current?.send(
-          JSON.stringify({
-            janus: "message",
-            session_id: data.data.id,
-            handle_id: data.data.handle_id,
-            body: { request: "start", offer },
-            transaction: Math.random().toString(36).substring(7),
-          })
-        );
+        try {
+            const offer = await peerRef.current.createOffer();
+            await peerRef.current.setLocalDescription(offer);
+            wsRef.current?.send(
+                JSON.stringify({
+                  janus: "message",
+                  session_id: data.data.id,
+                  handle_id: data.data.handle_id,
+                  body: { request: "start", offer },
+                  transaction: Math.random().toString(36).substring(7),
+                })
+              );
+          } catch (error) {
+            console.error("Error creating WebRTC offer:", error);
+          }
       }
 
       if (data.janus === "event") {

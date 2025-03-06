@@ -6,6 +6,38 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SignInButton } from "@/components/blocks/signInButton";
 import { auth } from "@/auth";
+import { FeatureSteps } from "@/components/blocks/feature-section"
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import Image from "next/image";
+import { BeamsBackground } from "@/components/ui/beam-background";
+import { motion } from "framer-motion";
+
+const features = [
+  { 
+    step: 'Step 1', 
+    title: 'Learn the Basics',
+    content: 'Start your Web3 journey by learning the basics of blockchain.', 
+    image: 'https://images.unsplash.com/photo-1723958929247-ef054b525153?q=80&w=2070&auto=format&fit=crop' 
+  },
+  { 
+    step: 'Step 2',
+    title: 'Deep Dive',
+    content: 'Dive deep into blockchain fundamentals and smart contract development.',
+    image: 'https://images.unsplash.com/photo-1723931464622-b7df7c71e380?q=80&w=2070&auto=format&fit=crop'
+  },
+  { 
+    step: 'Step 3',
+    title: 'Build Projects',
+    content: 'Graduate with hands-on Web3 experience through building decentralized applications.',
+    image: 'https://images.unsplash.com/photo-1725961476494-efa87ae3106a?q=80&w=2070&auto=format&fit=crop'
+  },
+  { 
+    step: 'Step 4',
+    title: 'Build Projects',
+    content: 'Graduate with hands-on Web3 experience through building decentralized applications.',
+    image: 'https://images.unsplash.com/photo-1725961476494-efa87ae3106a?q=80&w=2070&auto=format&fit=crop'
+  },
+]
 
 
 export default async function Home() {
@@ -15,6 +47,8 @@ export default async function Home() {
   }
   return (
     <main className="">
+      <BeamsBackground>
+      </BeamsBackground>
       <div className="container mx-auto">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div>
@@ -43,70 +77,37 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-10">
-          <div className="flex gap-4 flex-col items-start">
-            <div>
-              <Badge>Platform</Badge>
-            </div>
-            <div className="flex gap-2 flex-col">
-              <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
-                Something new!
-              </h2>
-              <p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground  text-left">
-                Managing a small business today is already tough.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-muted rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col">
-              <User className="w-8 h-8 stroke-1" />
-              <div className="flex flex-col">
-                <h3 className="text-xl tracking-tight">
-                  Variety of Operating systems
-                </h3>
-                <p className="text-muted-foreground max-w-xs text-base">
-                  Selection of multiple systems, we plan to add more in the
-                  coming days.
-                </p>
-              </div>
-            </div>
-            <div className="bg-muted rounded-md  aspect-square p-6 flex justify-between flex-col">
-              <User className="w-8 h-8 stroke-1" />
-              <div className="flex flex-col">
-                <h3 className="text-xl tracking-tight">Security</h3>
-                <p className="text-muted-foreground max-w-xs text-base">
-                  With our Security-first approach to setting up modular
-                  protocols, your files are yours forever.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-muted rounded-md aspect-square p-6 flex justify-between flex-col">
-              <User className="w-8 h-8 stroke-1" />
-              <div className="flex flex-col">
-                <h3 className="text-xl tracking-tight">Portal on Any-device</h3>
-                <p className="text-muted-foreground max-w-xs text-base">
-                  It works on anything that has a screen & Wifi. Probably even
-                  your Fridge.
-                </p>
-              </div>
-            </div>
-            <div className="bg-muted rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col">
-              <User className="w-8 h-8 stroke-1" />
-              <div className="flex flex-col">
-                <h3 className="text-xl tracking-tight">
-                  Flexible Data Storage
-                </h3>
-                <p className="text-muted-foreground max-w-xs text-base">
-                  Storage can be expanded upon usage and you are not locked into
-                  any storage plan.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="flex flex-col overflow-hidden">
+      <ContainerScroll
+        titleComponent={
+          <>
+            <h1 className="text-4xl font-semibold text-black dark:text-white">
+              Unleash the power of <br />
+              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+                Scroll Animations
+              </span>
+            </h1>
+          </>
+        }
+      >
+        <Image
+          src={`https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75`}
+          alt="hero"
+          height={720}
+          width={1400}
+          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          draggable={false}
+        />
+      </ContainerScroll>
+    </div>
+    <div className=" pb-[300px]">
+      <FeatureSteps 
+        features={features}
+        title="Your Journey Starts Here"
+        autoPlayInterval={4000}
+        imageHeight="h-[500px]"
+      />
+    </div>
     </main>
   );
 }
