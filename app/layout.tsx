@@ -27,7 +27,7 @@ export default function RootLayout({
         <SessionWrapper>
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem
             storageKey="egress.theme"
             disableTransitionOnChange

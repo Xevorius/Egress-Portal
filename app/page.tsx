@@ -1,8 +1,6 @@
 "use server"; // Add this to mark the file as a client component
 
 import { redirect } from "next/navigation";
-import { User, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SignInButton } from "@/components/blocks/signInButton";
 import { auth } from "@/auth";
@@ -10,7 +8,7 @@ import { FeatureSteps } from "@/components/blocks/feature-section"
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
 import { BeamsBackground } from "@/components/ui/beam-background";
-import { motion } from "framer-motion";
+import { DrawerDemo } from "@/components/blocks/drawer";
 
 const features = [
   { 
@@ -39,7 +37,6 @@ const features = [
   },
 ]
 
-
 export default async function Home() {
   const session = await auth();
   if (session?.user){
@@ -47,8 +44,7 @@ export default async function Home() {
   }
   return (
     <main className="">
-      <BeamsBackground>
-      </BeamsBackground>
+      <BeamsBackground/>
       <div className="container mx-auto">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div>
@@ -65,18 +61,10 @@ export default async function Home() {
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <Button
-              size="lg"
-              className="gap-4"
-              variant="outline"
-            >
-              Jump on a waitlist <Clock className="w-4 h-4" />
-            </Button>
-            <SignInButton/>
+            <DrawerDemo/>
           </div>
         </div>
       </div>
-
       <div className="flex flex-col overflow-hidden">
       <ContainerScroll
         titleComponent={

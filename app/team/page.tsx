@@ -18,7 +18,7 @@ const exampleImages = [
     url: "https://images.unsplash.com/photo-1640680608781-2e4199dd1579?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     link: "https://unsplash.com/photos/a-painting-of-a-palm-leaf-on-a-multicolored-background-AaNPwrSNOFE",
     title: "Neon Palm",
-    author: "Tim Mossholder,\n Test",
+    author: "Tim Rietdijk, Founder",
   },
   {
     url: "https://images.unsplash.com/photo-1726083085160-feeb4e1e5b00?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -115,7 +115,6 @@ function Preview() {
             <TextRotate
               ref={textRotateRef}
               texts={slicedImages.map((image) => image.author)}
-              sub_texts={slicedImages.map((image) => image.title)}
               mainClassName="text-sm sm:text-3xl md:text-4xl w-full justify-center flex pt-2"
               splitLevelClassName="overflow-hidden pb-2"
               staggerFrom={"first"}
