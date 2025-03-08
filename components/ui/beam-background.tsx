@@ -23,18 +23,19 @@ interface Beam {
 }
 
 function createBeam(width: number, height: number): Beam {
-  return {
-    x: Math.random() * width,
-    y: Math.random() * height,
-    width: 40 + Math.random() * 50,
-    length: height * 2,
-    angle: -30 + Math.random() * 20,
-    speed: 0.5 + Math.random(),
-    opacity: 0.1 + Math.random() * 0.15,
-    hue: 190 + Math.random() * 50,
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.02,
-  };
+    const angle = -35 + Math.random() * 10;
+    return {
+        x: Math.random() * width, // Ensure beams are within view
+        y: Math.random() * height,
+        width: 30 + Math.random() * 60,
+        length: height * 2,
+        angle: angle,
+        speed: 0.3 + Math.random() * 0.8, // Slightly slower on mobile
+        opacity: 0.1 + Math.random() * 0.2,
+        hue: 190 + Math.random() * 70,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.015 + Math.random() * 0.025, // Adjust pulse speed
+    };
 }
 
 export function BeamsBackground({
@@ -45,7 +46,7 @@ export function BeamsBackground({
   const beamsRef = useRef<Beam[]>([]);
   const animationFrameRef = useRef<number>(0);
   const lastFrameTimeRef = useRef<number>(0);
-  const MINIMUM_BEAMS = 15;
+  const MINIMUM_BEAMS = 20;
 
   const opacityMap = {
     subtle: 0.5,
@@ -62,16 +63,21 @@ export function BeamsBackground({
 
     // Resize canvas efficiently
     const updateCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
-
-      beamsRef.current = Array.from({ length: MINIMUM_BEAMS }, () =>
-        createBeam(canvas.width, canvas.height)
-      );
+        const dpr = window.devicePixelRatio || 1;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+    
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.scale(dpr, dpr);
+    
+        // Adjust beam generation to be within the visible area
+        const totalBeams = MINIMUM_BEAMS * (width < 768 ? 1 : 1.5); // Fewer beams on mobile
+        beamsRef.current = Array.from({ length: totalBeams }, () =>
+            createBeam(width, height) // Use unscaled dimensions
+        );
     };
 
     updateCanvasSize();
