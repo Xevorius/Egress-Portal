@@ -1,9 +1,5 @@
+import { redirect } from "next/navigation";
 
-
-export default function features() {
-  return (
-  <div>Hi</div>
-
-  );
+export default function FeaturesRedirect() {
+  redirect("/projects/unet");
 }
-

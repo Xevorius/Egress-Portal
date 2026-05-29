@@ -1,10 +1,5 @@
+import { redirect } from "next/navigation";
 
-
-export default function changelog() {
-    return (
-    <div>Hi</div>
-  
-    );
-  }
-  
-  
+export default function ChangelogRedirect() {
+  redirect("/projects");
+}
