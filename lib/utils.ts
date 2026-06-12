@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/programs", label: "Programs" },
   { href: "/company", label: "Company" },
   { href: "/policies", label: "Policies" },
 ];
