@@ -54,7 +54,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
-                <Link href="/projects/unet">
+                <Link href="https://unet.egress.live">
                   Explore U-net <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
